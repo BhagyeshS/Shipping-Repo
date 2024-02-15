@@ -1,15 +1,22 @@
 --function calculates the total number of bids placed for a given shipment ID
 
-CREATE FUNCTION CountBidsForShipment(p_ShipmentID INT)
-RETURNS INT
-BEGIN
-    DECLARE bidCount INT;
+DELIMITER //
  
-    SELECT COUNT(*) INTO bidCount
+CREATE FUNCTION CalculateTotalBidAmount(
+    p_ShipmentID INT
+)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE totalBidAmount DECIMAL(10, 2);
+    SELECT SUM(BidAmount) INTO totalBidAmount
     FROM Bids
     WHERE ShipmentID = p_ShipmentID;
  
-    RETURN bidCount;
+    IF totalBidAmount IS NULL THEN
+        SET totalBidAmount = 0.00;
+    END IF;
+ 
+    RETURN totalBidAmount;
 END //
  
 DELIMITER ;
