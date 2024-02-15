@@ -1,0 +1,22 @@
+--can use this function to calculate the total bid amount for shipments
+
+DELIMITER //
+ 
+CREATE FUNCTION CalculateTotalBidAmount(
+    p_ShipmentID INT
+)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE totalBidAmount DECIMAL(10, 2);
+    SELECT SUM(BidAmount) INTO totalBidAmount
+    FROM Bids
+    WHERE ShipmentID = p_ShipmentID;
+ 
+    IF totalBidAmount IS NULL THEN
+        SET totalBidAmount = 0.00;
+    END IF;
+ 
+    RETURN totalBidAmount;
+END //
+ 
+DELIMITER ;
