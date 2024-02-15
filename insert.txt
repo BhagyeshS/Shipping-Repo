@@ -1,9 +1,9 @@
 Users Table:
-sqlCopy codeINSERT INTO Users (UserID, Username, Email, Password)VALUES (1, 'john_doe', 'john@example.com', 'password123'),
+INSERT INTO Users (UserID, Username, Email, Password)VALUES (1, 'john_doe', 'john@example.com', 'password123'),
        (2, 'jane_smith', 'jane@example.com', 'securepass456');
  
 Shippers Table:
-sqlCopy codeINSERT INTO Shippers (ShipperID, ShipperName, ShipperContactInfo)VALUES (1, 'Shipper Express', 'contact@shipperexpress.com'),
+INSERT INTO Shippers (ShipperID, ShipperName, ShipperContactInfo)VALUES (1, 'Shipper Express', 'contact@shipperexpress.com'),
        (2, 'FastShip Logistics', 'info@fastshiplogistics.com');
  
 Customers Table:
